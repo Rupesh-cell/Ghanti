@@ -3,8 +3,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Virtual Ghanti - Digital Temple Bell</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Jay Ghanti - Digital Temple Bell</title>
+    
+    <!-- PWA & Mobile Meta Tags -->
+    <meta name="theme-color" content="#0099db" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Jay Ghanti" />
+    <link rel="manifest" href="manifest.json" />
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,8 +21,12 @@
       body {
         font-family: 'Poppins', sans-serif;
         background-color: #0099db;
-        overflow-x: hidden;
+        overflow: hidden;
         margin: 0;
+        /* Prevent elastic scrolling/overscroll on mobile */
+        position: fixed;
+        width: 100%;
+        height: 100%;
       }
       .font-serif {
         font-family: 'Playfair Display', serif;
@@ -32,7 +44,13 @@
         transform-origin: top center;
       }
       .bell-shadow {
-        filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
+        filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
+      }
+      /* Ensure full screen height on mobile browsers */
+      #root {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
       }
     </style>
   <script type="importmap">
