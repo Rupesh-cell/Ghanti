@@ -1,0 +1,7 @@
+{
+  "name": "Ghanti App",
+  "description": "Jay Ghanti",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
