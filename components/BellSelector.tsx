@@ -10,10 +10,10 @@ interface BellTypeOption {
 }
 
 const BELL_OPTIONS: BellTypeOption[] = [
-  { id: 'temple', label: 'Ghanti', icon: '🔱' },
-  { id: 'hand', label: 'Hand Bell', icon: '🔔' },
-  { id: 'tibetan', label: 'Singing Bowl', icon: '🥣' },
-  { id: 'church', label: 'Church Bell', icon: '⛪' },
+  { id: 'temple', label: 'Temple Ghanti', icon: '🔱' },
+  { id: 'hand', label: 'Ritual Bell', icon: '🔔' },
+  { id: 'tibetan', label: 'Sacred Bowl', icon: '🥣' },
+  { id: 'church', label: 'Steeple Bell', icon: '⛪' },
 ];
 
 interface BellSelectorProps {
