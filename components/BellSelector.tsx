@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-export type BellType = 'temple' | 'hand' | 'tibetan' | 'church';
+export type BellType = 'temple' | 'hand' | 'tibetan' | 'zen';
 
 interface BellTypeOption {
   id: BellType;
@@ -10,10 +10,10 @@ interface BellTypeOption {
 }
 
 const BELL_OPTIONS: BellTypeOption[] = [
-  { id: 'temple', label: 'Temple Ghanti', icon: '🔱' },
-  { id: 'hand', label: 'Ritual Bell', icon: '🔔' },
+  { id: 'temple', label: 'Temple Ghanti', icon: '🛕' },
+  { id: 'hand', label: 'Ritual Bell', icon: '🔱' },
   { id: 'tibetan', label: 'Sacred Bowl', icon: '🥣' },
-  { id: 'church', label: 'Steeple Bell', icon: '⛪' },
+  { id: 'zen', label: 'Brass Bell', icon: '🔔' },
 ];
 
 interface BellSelectorProps {

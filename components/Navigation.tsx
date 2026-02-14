@@ -9,10 +9,10 @@ interface NavOption {
 }
 
 const NAV_OPTIONS: NavOption[] = [
-  { id: 'temple', label: 'Temple', icon: '🔱' },
-  { id: 'hand', label: 'Ritual', icon: '🔔' },
+  { id: 'temple', label: 'Temple', icon: '🛕' },
+  { id: 'hand', label: 'Ritual', icon: '🔱' },
   { id: 'tibetan', label: 'Sacred', icon: '🥣' },
-  { id: 'church', label: 'Steeple', icon: '⛪' },
+  { id: 'zen', label: 'Brass', icon: '🔔' },
 ];
 
 interface NavigationProps {

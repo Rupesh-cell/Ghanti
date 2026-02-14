@@ -12,7 +12,7 @@ const SOUND_URLS: Record<BellType, string> = {
   temple: "https://assets.mixkit.co/active_storage/sfx/2042/2042-preview.mp3",
   hand: "https://assets.mixkit.co/active_storage/sfx/2041/2041-preview.mp3",
   tibetan: "https://assets.mixkit.co/active_storage/sfx/2040/2040-preview.mp3",
-  church: "https://assets.mixkit.co/active_storage/sfx/2039/2039-preview.mp3"
+  zen: "https://assets.mixkit.co/active_storage/sfx/2037/2037-preview.mp3" // Switched to a sharper bell sound for Brass
 };
 
 const Bell: React.FC<BellProps> = ({ type, onRing }) => {
@@ -84,27 +84,22 @@ const Bell: React.FC<BellProps> = ({ type, onRing }) => {
     const ctx = audioContextRef.current;
     if (!ctx) return;
 
-    // Resume context if suspended (browser security)
     if (ctx.state === 'suspended') {
       ctx.resume();
     }
 
-    // Immediate Animation Trigger
     setAnimationKey(prev => prev + 1);
 
-    // Haptic Feedback
     if ('vibrate' in navigator) {
       navigator.vibrate(15);
     }
 
-    // Web Audio Playback (Ultra Low Latency)
     const buffer = audioBuffers.current.get(type);
     if (buffer) {
       const source = ctx.createBufferSource();
       source.buffer = buffer;
       
       const gainNode = ctx.createGain();
-      // Slight variation in volume and pitch for a more natural feel during rapid fire
       gainNode.gain.setValueAtTime(0.8 + Math.random() * 0.2, ctx.currentTime);
       source.playbackRate.setValueAtTime(0.98 + Math.random() * 0.04, ctx.currentTime);
       
@@ -113,24 +108,33 @@ const Bell: React.FC<BellProps> = ({ type, onRing }) => {
       source.start(0);
     }
 
-    // Notify parent (increment counter)
     onRing();
   }, [onRing, type]);
 
   const renderBellIcon = () => {
     return (
       <svg viewBox="0 0 200 240" fill="none" className="w-full h-full bell-shadow text-[#0099db]">
-        <rect x="97" y="0" width="6" height="15" rx="1" fill="currentColor" />
-        <rect x="97" y="18" width="6" height="15" rx="1" fill="currentColor" />
-        <rect x="97" y="36" width="6" height="15" rx="1" fill="currentColor" />
-        <path d="M88 56c0-10 24-10 24 0v6h-24v-6z" fill="currentColor" />
-        <path d="M91 56c0-6 18-6 18 0v6h-18v-6z" fill="white" />
-        <path d="M82 62h36l4 10h-44l4-10z" fill="currentColor" />
-        <path d="M80 72h40v6H80v-6z" fill="currentColor" />
-        <path d="M72 78c5-4 51-4 56 0 12 4 18 18 18 28l28 85c2 10-6 20-16 20H42c-10 0-18-10-16-20l28-85c0-10 6-24 18-28z" fill="currentColor" />
-        <path d="M66 108h68" stroke="white" strokeWidth="4" strokeLinecap="round" />
-        <path d="M62 125h76" stroke="white" strokeWidth="4" strokeLinecap="round" />
-        <rect x="92" y="211" width="16" height="28" rx="8" fill="currentColor" />
+        {/* Intricate top loop */}
+        <path d="M92 20c0-10 16-10 16 0s-16 10-16 0z" stroke="currentColor" strokeWidth="4" />
+        <rect x="97" y="0" width="6" height="40" rx="1" fill="currentColor" />
+        
+        {/* Crown of the bell */}
+        <path d="M60 60h80l10 20H50l10-20z" fill="currentColor" />
+        <path d="M50 80h100v10H50V80z" fill="currentColor" />
+        
+        {/* Body of the Ghanti */}
+        <path d="M70 90c-15 0-30 20-35 50-5 30-5 60 5 70h120c10-10 10-40 5-70s-20-50-35-50H70z" fill="currentColor" />
+        
+        {/* Decorative bands */}
+        <path d="M45 140h110" stroke="white" strokeWidth="2" opacity="0.4" />
+        <path d="M40 180h120" stroke="white" strokeWidth="3" opacity="0.6" />
+        
+        {/* Lower Rim */}
+        <path d="M35 210c0 5 130 5 130 0l5 15c0 10-140 10-140 0l5-15z" fill="currentColor" />
+        
+        {/* Clapper */}
+        <circle cx="100" cy="225" r="10" fill="currentColor" />
+        <rect x="98" cy="200" width="4" height="25" fill="currentColor" />
       </svg>
     );
   };
