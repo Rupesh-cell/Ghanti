@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <title>Jay Ghanti - Digital Temple Bell</title>
     
     <!-- PWA & Mobile Meta Tags -->
@@ -23,10 +23,10 @@
         background-color: #0099db;
         overflow: hidden;
         margin: 0;
-        /* Prevent elastic scrolling/overscroll on mobile */
         position: fixed;
         width: 100%;
         height: 100%;
+        -webkit-tap-highlight-color: transparent;
       }
       .font-serif {
         font-family: 'Playfair Display', serif;
@@ -46,25 +46,26 @@
       .bell-shadow {
         filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
       }
-      /* Ensure full screen height on mobile browsers */
       #root {
         height: 100%;
         display: flex;
         flex-direction: column;
       }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.4",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.41.0"
-  }
-}
-</script>
-</head>
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@^19.2.4",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+        "react/": "https://esm.sh/react@^19.2.4/",
+        "@google/genai": "https://esm.sh/@google/genai@^1.41.0"
+      }
+    }
+    </script>
+  </head>
   <body>
     <div id="root"></div>
+    <!-- Explicitly load the entry point -->
+    <script type="module" src="./index.tsx"></script>
   </body>
 </html>

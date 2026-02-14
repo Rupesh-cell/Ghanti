@@ -1,7 +1,5 @@
 {
-  "name": "Ghanti App",
-  "description": "Jay Ghanti",
-  "requestFramePermissions": [
-    "microphone"
-  ]
+  "name": "Jay Ghanti",
+  "description": "A digital ritual bell for your daily prayers.",
+  "requestFramePermissions": []
 }
